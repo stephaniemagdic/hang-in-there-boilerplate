@@ -147,7 +147,7 @@ function updateQuote() {
 }
 
 function updateImage() {
-  image.setAttribute("src", images[getRandomIndex(images)]);
+  image.src = images[getRandomIndex(images)]
 }
 
 function updatePoster() {
