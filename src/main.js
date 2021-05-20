@@ -8,6 +8,7 @@ var homePage = document.querySelector(".main-poster")
 var formPage = document.querySelector(".poster-form")
 var savedPostersPage = document.querySelector(".saved-posters")
 var showSavedPostersButton = document.querySelector(".show-saved")
+var takeMeBackButton = document.querySelector(".show-main");
 
 
 // we've provided you with some data to work with 👇
@@ -117,10 +118,9 @@ var currentPoster;
 showRandomButton.addEventListener('click', updatePoster);
 
 window.addEventListener('load', updatePoster);
-
-makeYourOwnPosterButton.addEventListener("click", showFormSection)
-
-showSavedPostersButton.addEventListener("click", showSavedPostersSection)
+makeYourOwnPosterButton.addEventListener("click", showFormSection);
+showSavedPostersButton.addEventListener("click", showSavedPostersSection);
+takeMeBackButton.addEventListener("click", returnToMainPage);
 
 
 function showFormSection() {
@@ -131,6 +131,11 @@ function showFormSection() {
 function showSavedPostersSection() {
   homePage.classList.add("hidden");
   savedPostersPage.classList.remove("hidden");
+}
+
+function returnToMainPage() {
+  homePage.classList.remove("hidden");
+  formPage.classList.add("hidden");
 }
 
 
