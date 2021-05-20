@@ -3,6 +3,11 @@ var showRandomButton = document.querySelector('.show-random');
 var image = document.querySelector(".poster-img");
 var quote = document.querySelector(".poster-quote");
 var title = document.querySelector(".poster-title");
+var makeYourOwnPosterButton = document.querySelector(".show-form");
+var homePage = document.querySelector(".main-poster")
+var formPage = document.querySelector(".poster-form")
+var savedPostersPage = document.querySelector(".saved-posters")
+var showSavedPostersButton = document.querySelector(".show-saved")
 
 
 // we've provided you with some data to work with 👇
@@ -112,6 +117,23 @@ var currentPoster;
 showRandomButton.addEventListener('click', updatePoster);
 
 window.addEventListener('load', updatePoster);
+
+makeYourOwnPosterButton.addEventListener("click", showFormSection)
+
+showSavedPostersButton.addEventListener("click", showSavedPostersSection)
+
+
+function showFormSection() {
+  homePage.classList.add("hidden");
+  formPage.classList.remove("hidden");
+}
+
+function showSavedPostersSection() {
+  homePage.classList.add("hidden");
+  savedPostersPage.classList.remove("hidden");
+}
+
+
 
 
 
