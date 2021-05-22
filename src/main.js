@@ -1,11 +1,5 @@
 // query selector variables go here 👇
-class Poster {
-  constructor(imageInput, titleInput, quoteInput) {
-    this.image = imageInput;
-    this.title = titleInput;
-    this.quote = quoteInput;
-  }
-}
+
 var showRandomButton = document.querySelector('.show-random');
 var image = document.querySelector(".poster-img");
 var quote = document.querySelector(".poster-quote");
@@ -124,6 +118,12 @@ var currentPoster;
 
 // event listeners go here 👇
 
+showMyPosterButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  designPoster();
+  console.log("Hello!");
+});
+
 showRandomButton.addEventListener('click', updatePoster);
 
 window.addEventListener('load', updatePoster);
@@ -133,6 +133,20 @@ showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
 backToMainButton.addEventListener("click", leaveSavedPostersSection);
 
+// functions and event handlers go here 👇
+
+
+function designPoster() {
+  var image = document.querySelector('#poster-image-url').value;
+  var title = document.querySelector('#poster-title').value;
+  var quote = document.querySelector('#poster-quote').value;
+  images.push(image);
+  titles.push(title);
+  quotes.push(quote);
+  leaveFormSection();
+  showNewPoster(image, title, quote);
+  console.log("hello Stephanie and Mark!")
+}
 
 function showFormSection() {
   homePage.classList.add("hidden");
@@ -155,23 +169,10 @@ function leaveSavedPostersSection() {
 }
 
 
-
-
-// functions and event handlers go here 👇
-
-//make function that creates a class of poster and runs the values of the input fields as arguments in the constructor.
-//push those values into their respective arrays
-//invoke the leaveFormSection functions
-//display the newly designed poster
-
-function designPoster() {
-  var image = document.querySelector('#poster-image-url').value;
-  var title = document.querySelector('#poster-title').value;
-  var quote = document.querySelector('#poster-quote').value;
-  images.push(image);
-  titles.push(title);
-  quotes.push(quote);
-
+function showNewPoster(newURL, newTitle, newQuote) {
+  quote.innerText = newQuote;
+  title.innerText = newTitle;
+  image.src = newURL;
 }
 
 function updateTitle() {
