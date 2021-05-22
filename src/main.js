@@ -137,6 +137,7 @@ backToMainButton.addEventListener("click", leaveSavedPostersSection);
 
 
 function designPoster() {
+  new Poster(image, title, quote);
   var image = document.querySelector('#poster-image-url').value;
   var title = document.querySelector('#poster-title').value;
   var quote = document.querySelector('#poster-quote').value;
