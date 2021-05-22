@@ -1,4 +1,11 @@
 // query selector variables go here 👇
+class Poster {
+  constructor(imageInput, titleInput, quoteInput) {
+    this.image = imageInput;
+    this.title = titleInput;
+    this.quote = quoteInput;
+  }
+}
 var showRandomButton = document.querySelector('.show-random');
 var image = document.querySelector(".poster-img");
 var quote = document.querySelector(".poster-quote");
@@ -10,6 +17,7 @@ var savedPostersPage = document.querySelector(".saved-posters")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -119,6 +127,7 @@ var currentPoster;
 showRandomButton.addEventListener('click', updatePoster);
 
 window.addEventListener('load', updatePoster);
+
 makeYourOwnPosterButton.addEventListener("click", showFormSection);
 showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
@@ -149,6 +158,22 @@ function leaveSavedPostersSection() {
 
 
 // functions and event handlers go here 👇
+
+//make function that creates a class of poster and runs the values of the input fields as arguments in the constructor.
+//push those values into their respective arrays
+//invoke the leaveFormSection functions
+//display the newly designed poster
+
+function designPoster() {
+  var image = document.querySelector('#poster-image-url').value;
+  var title = document.querySelector('#poster-title').value;
+  var quote = document.querySelector('#poster-quote').value;
+  images.push(image);
+  titles.push(title);
+  quotes.push(quote);
+
+}
+
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
 }
@@ -167,7 +192,6 @@ function updatePoster() {
   updateImage();
 
 }
-
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
