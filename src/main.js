@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+
 var showRandomButton = document.querySelector('.show-random');
 var image = document.querySelector(".poster-img");
 var quote = document.querySelector(".poster-quote");
@@ -10,6 +11,7 @@ var savedPostersPage = document.querySelector(".saved-posters")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -116,14 +118,34 @@ var currentPoster;
 
 // event listeners go here 👇
 
+showMyPosterButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  designPoster();
+});
+
 showRandomButton.addEventListener('click', updatePoster);
 
 window.addEventListener('load', updatePoster);
+
 makeYourOwnPosterButton.addEventListener("click", showFormSection);
 showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
 backToMainButton.addEventListener("click", leaveSavedPostersSection);
 
+// functions and event handlers go here 👇
+
+
+function designPoster() {
+  new Poster(image, title, quote);
+  var image = document.querySelector('#poster-image-url').value;
+  var title = document.querySelector('#poster-title').value;
+  var quote = document.querySelector('#poster-quote').value;
+  images.push(image);
+  titles.push(title);
+  quotes.push(quote);
+  leaveFormSection();
+  showNewPoster(image, title, quote);
+}
 
 function showFormSection() {
   homePage.classList.add("hidden");
@@ -146,9 +168,12 @@ function leaveSavedPostersSection() {
 }
 
 
+function showNewPoster(newURL, newTitle, newQuote) {
+  quote.innerText = newQuote;
+  title.innerText = newTitle;
+  image.src = newURL;
+}
 
-
-// functions and event handlers go here 👇
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
 }
@@ -167,7 +192,6 @@ function updatePoster() {
   updateImage();
 
 }
-
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
