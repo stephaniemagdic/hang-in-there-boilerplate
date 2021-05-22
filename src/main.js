@@ -141,11 +141,15 @@ savePosterButton.addEventListener("click", saveNewPoster);
 //create a function that pushes the object instance (the current poster (variable)) to the saved posters array
 
 function saveNewPoster() {
-  for (var i = 0; i < savedPosters.length; i ++) {
-  if()
-  savedPosters.push(currentPoster);
+  if (savedPosters.length === 0) {
+    savedPosters.push(currentPoster) }
+  else {
+  for (var i = 0; i < savedPosters.length; i++) {
+  if (savedPosters[i] !== currentPoster) {
+    savedPosters.splice(i, 1); }
 }
-//add conditional to check if the array already has the saved poster, if so do not push the poster to the array
+}
+}
 
 
 function designPoster() {
@@ -156,8 +160,6 @@ function designPoster() {
   titles.push(title);
   quotes.push(quote);
   currentPoster = new Poster(image, title, quote);
-  console.log(currentPoster);
-  console.log(image, title, quote);
   leaveFormSection();
   showNewPoster(image, title, quote);
 }
