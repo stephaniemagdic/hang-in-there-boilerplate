@@ -12,6 +12,8 @@ var showSavedPostersButton = document.querySelector(".show-saved")
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
+var article = document.querySelector(".saved-posters-grid");
 
 
 // we've provided you with some data to work with 👇
@@ -114,12 +116,19 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+var currentTitle = title.innerText;
+var currentQuote = quote.innerText;
+var currentURL = image.attributes.src;
 var currentPoster;
+
+// = {id: Date.now(), title: currentTitle, quote: currentQuote, imageURL: currentURL };
+//`<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
 
 // event listeners go here 👇
 
 showMyPosterButton.addEventListener('click', function(e) {
   e.preventDefault();
+  console.log("You are invoking the design poster function!")
   designPoster();
 });
 
@@ -131,25 +140,17 @@ makeYourOwnPosterButton.addEventListener("click", showFormSection);
 showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
 backToMainButton.addEventListener("click", leaveSavedPostersSection);
+savePosterButton.addEventListener("click", saveNewPoster);
 
 // functions and event handlers go here 👇
-
-//select the button and save to a variable
-var savePosterButton = document.querySelector(".save-poster");
-//create an event listener on the save this poster button
-savePosterButton.addEventListener("click", saveNewPoster);
-//create a function that pushes the object instance (the current poster (variable)) to the saved posters array
 
 function saveNewPoster() {
   if (savedPosters.length === 0) {
     savedPosters.push(currentPoster) }
-  else {
-  for (var i = 0; i < savedPosters.length; i++) {
-  if (savedPosters[i] !== currentPoster) {
-    savedPosters.splice(i, 1); }
+  else if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)}
 }
-}
-}
+
 
 
 function designPoster() {
@@ -164,15 +165,45 @@ function designPoster() {
   showNewPoster(image, title, quote);
 }
 
+function showNewPoster(newURL, newTitle, newQuote) {
+  quote.innerText = newQuote;
+  title.innerText = newTitle;
+  image.src = newURL;
+}
+
 function showFormSection() {
   homePage.classList.add("hidden");
   formPage.classList.remove("hidden");
 }
 
+//create a function called displaySavedPosters
+
+
+function displaySavedPosters() {
+  for(var i = 0; i < savedPosters.length; i++) {
+    var newDiv = document.createElement("div");
+    newDiv.classList.add("mini-poster");
+    article.appendChild(newDiv);
+    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
+  }
+
+}
+
+  //use a for loop to loop through each savedPoster in the savedPoster array
+    //create div element using .createElement()
+    // use class.list.add() to add the mini-poster class
+    //append the div element to the article
+    // add innterhtml to the div
+      //newDiv.innerHTML = `<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`
+
+
 function showSavedPostersSection() {
   homePage.classList.add("hidden");
   savedPostersPage.classList.remove("hidden");
+  displaySavedPosters()
 }
+
+
 
 function leaveFormSection() {
   homePage.classList.remove("hidden");
@@ -182,14 +213,9 @@ function leaveFormSection() {
 function leaveSavedPostersSection() {
   homePage.classList.remove("hidden");
   savedPostersPage.classList.add("hidden");
+  article.innerHTML = "";
 }
 
-
-function showNewPoster(newURL, newTitle, newQuote) {
-  quote.innerText = newQuote;
-  title.innerText = newTitle;
-  image.src = newURL;
-}
 
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
