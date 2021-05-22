@@ -119,18 +119,12 @@ var savedPosters = [];
 var currentTitle = title.innerText;
 var currentQuote = quote.innerText;
 var currentURL = image.attributes.src;
-var currentPoster;
-
-// = {id: Date.now(), title: currentTitle, quote: currentQuote, imageURL: currentURL };
+var currentPoster = {id: Date.now(), title: currentTitle, quote: currentQuote, imageURL: currentURL };
 //`<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
 
 // event listeners go here 👇
 
-showMyPosterButton.addEventListener('click', function(e) {
-  e.preventDefault();
-  console.log("You are invoking the design poster function!")
-  designPoster();
-});
+showMyPosterButton.addEventListener('click', designPoster);
 
 showRandomButton.addEventListener('click', updatePoster);
 
@@ -153,7 +147,8 @@ function saveNewPoster() {
 
 
 
-function designPoster() {
+function designPoster(e) {
+  e.preventDefault();
   var image = document.querySelector('#poster-image-url').value;
   var title = document.querySelector('#poster-title').value;
   var quote = document.querySelector('#poster-quote').value;
