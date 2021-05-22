@@ -121,7 +121,6 @@ var currentPoster;
 showMyPosterButton.addEventListener('click', function(e) {
   e.preventDefault();
   designPoster();
-  console.log("Hello!");
 });
 
 showRandomButton.addEventListener('click', updatePoster);
@@ -146,7 +145,6 @@ function designPoster() {
   quotes.push(quote);
   leaveFormSection();
   showNewPoster(image, title, quote);
-  console.log("hello Stephanie and Mark!")
 }
 
 function showFormSection() {
