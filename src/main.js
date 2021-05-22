@@ -134,15 +134,30 @@ backToMainButton.addEventListener("click", leaveSavedPostersSection);
 
 // functions and event handlers go here 👇
 
+//select the button and save to a variable
+var savePosterButton = document.querySelector(".save-poster");
+//create an event listener on the save this poster button
+savePosterButton.addEventListener("click", saveNewPoster);
+//create a function that pushes the object instance (the current poster (variable)) to the saved posters array
+
+function saveNewPoster() {
+  for (var i = 0; i < savedPosters.length; i ++) {
+  if()
+  savedPosters.push(currentPoster);
+}
+//add conditional to check if the array already has the saved poster, if so do not push the poster to the array
+
 
 function designPoster() {
-  new Poster(image, title, quote);
   var image = document.querySelector('#poster-image-url').value;
   var title = document.querySelector('#poster-title').value;
   var quote = document.querySelector('#poster-quote').value;
   images.push(image);
   titles.push(title);
   quotes.push(quote);
+  currentPoster = new Poster(image, title, quote);
+  console.log(currentPoster);
+  console.log(image, title, quote);
   leaveFormSection();
   showNewPoster(image, title, quote);
 }
