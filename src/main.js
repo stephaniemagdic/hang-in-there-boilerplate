@@ -116,17 +116,12 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-//var currentPoster;
-
 
 // event listeners go here 👇
 
-showMyPosterButton.addEventListener('click', designPoster);
-
-showRandomButton.addEventListener('click', updatePoster);
-
 window.addEventListener('load', updatePoster);
-
+showMyPosterButton.addEventListener('click', designPoster);
+showRandomButton.addEventListener('click', updatePoster);
 makeYourOwnPosterButton.addEventListener("click", showFormSection);
 showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
@@ -137,13 +132,11 @@ savePosterButton.addEventListener("click", saveNewPoster);
 
 function saveNewPoster() {
   var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
-  if (savedPosters.length === 0) {
+  if (!savedPosters.length) {
     savedPosters.push(currentPoster) }
   else if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)}
 }
-
-
 
 function designPoster(e) {
   e.preventDefault();
