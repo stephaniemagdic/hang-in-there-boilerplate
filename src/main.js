@@ -14,8 +14,6 @@ var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 var article = document.querySelector(".saved-posters-grid");
-var savedPosterSection = document.querySelector(".saved-posters");
-
 
 // we've provided you with some data to work with 👇
 
@@ -128,7 +126,6 @@ showSavedPostersButton.addEventListener("click", showSavedPostersSection);
 takeMeBackButton.addEventListener("click", leaveFormSection);
 backToMainButton.addEventListener("click", leaveSavedPostersSection);
 savePosterButton.addEventListener("click", saveNewPoster);
-
 
 // functions and event handlers go here 👇
 
