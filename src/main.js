@@ -116,11 +116,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentTitle = title.innerText;
-var currentQuote = quote.innerText;
-var currentURL = image.attributes.src;
-var currentPoster = {id: Date.now(), title: currentTitle, quote: currentQuote, imageURL: currentURL };
-//`<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
+var currentPoster;
+
 
 // event listeners go here 👇
 
@@ -139,6 +136,7 @@ savePosterButton.addEventListener("click", saveNewPoster);
 // functions and event handlers go here 👇
 
 function saveNewPoster() {
+  currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
   if (savedPosters.length === 0) {
     savedPosters.push(currentPoster) }
   else if (!savedPosters.includes(currentPoster)) {
