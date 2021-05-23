@@ -14,7 +14,7 @@ var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 var article = document.querySelector(".saved-posters-grid");
-
+var savedPosterSection = document.querySelector(".saved-posters");
 
 
 // we've provided you with some data to work with 👇
@@ -129,16 +129,17 @@ takeMeBackButton.addEventListener("click", leaveFormSection);
 backToMainButton.addEventListener("click", leaveSavedPostersSection);
 savePosterButton.addEventListener("click", saveNewPoster);
 
+
 // functions and event handlers go here 👇
-//
-function removePoster() {
-  // var divID = e.target.id;
-  // var div = document.getElementById(divID);
-  // console.log(div);
-  // console.log(divID);
-  // console.log(div.classList);
-  // div.setAttribute("class", ".delete");
-  // we need to remove th clicked div from the savedPosters array
+
+function removePoster(e) {
+  var divID = e.target.closest(`#${savedPosters.id}`);
+  var div = document.getElementById(divID);
+  console.log(div);
+  console.log(divID);
+  console.log(div.classList);
+  div.setAttribute("class", ".delete");
+
 }
 
 function displaySavedPosters() {
@@ -149,10 +150,10 @@ function displaySavedPosters() {
     newDiv.setAttribute("id", savedPosters[i].id);
     // var divID = savedPosters[i].id;
     newDiv.addEventListener("dblclick", removePoster)
-    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
+    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL id=${savedPosters[i].id}} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
   }
-
-}
+// newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} id=${savedPosters[i].id}> <h2 id= ${savedPosters[i].id}> ${savedPosters[i].title} </h2> <h4 id= ${savedPosters[i].id}>${savedPosters[i].quote}</h4>`;
+// }
 
 function saveNewPoster() {
   var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
