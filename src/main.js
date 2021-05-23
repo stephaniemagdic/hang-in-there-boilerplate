@@ -116,7 +116,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+//var currentPoster;
 
 
 // event listeners go here 👇
@@ -136,7 +136,7 @@ savePosterButton.addEventListener("click", saveNewPoster);
 // functions and event handlers go here 👇
 
 function saveNewPoster() {
-  currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
+  var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
   if (savedPosters.length === 0) {
     savedPosters.push(currentPoster) }
   else if (!savedPosters.includes(currentPoster)) {
@@ -153,7 +153,7 @@ function designPoster(e) {
   images.push(image);
   titles.push(title);
   quotes.push(quote);
-  currentPoster = new Poster(image, title, quote);
+  var currentPoster = new Poster(image, title, quote);
   leaveFormSection();
   showNewPoster(image, title, quote);
 }
@@ -169,7 +169,6 @@ function showFormSection() {
   formPage.classList.remove("hidden");
 }
 
-//create a function called displaySavedPosters
 
 
 function displaySavedPosters() {
@@ -181,13 +180,6 @@ function displaySavedPosters() {
   }
 
 }
-
-  //use a for loop to loop through each savedPoster in the savedPoster array
-    //create div element using .createElement()
-    // use class.list.add() to add the mini-poster class
-    //append the div element to the article
-    // add innterhtml to the div
-      //newDiv.innerHTML = `<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`
 
 
 function showSavedPostersSection() {
