@@ -15,7 +15,6 @@ var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 var article = document.querySelector(".saved-posters-grid");
 
-
 // we've provided you with some data to work with 👇
 
 var images = [
@@ -130,6 +129,28 @@ savePosterButton.addEventListener("click", saveNewPoster);
 
 // functions and event handlers go here 👇
 
+function removePoster(e) {
+  var targetPosterID = e.target.id;
+  var target = document.getElementById(`${e.target.id}`);
+  target.remove();
+  for (var i =0; i < savedPosters.length; i++){
+    if(`${savedPosters[i].id}` === `${targetPosterID}`){
+      savedPosters.splice(i, 1);
+    }
+  }
+}
+
+function displaySavedPosters() {
+  for(var i = 0; i < savedPosters.length; i++) {
+    var newDiv = document.createElement("div");
+    newDiv.classList.add("mini-poster");
+    article.appendChild(newDiv);
+    newDiv.setAttribute("id", savedPosters[i].id);
+    newDiv.addEventListener("dblclick", removePoster);
+    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} id=${savedPosters[i].id}> <h2 id= ${savedPosters[i].id}> ${savedPosters[i].title} </h2> <h4 id= ${savedPosters[i].id}>${savedPosters[i].quote}</h4>`;
+  }
+}
+
 function saveNewPoster() {
   var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
   if (!savedPosters.length) {
@@ -162,26 +183,11 @@ function showFormSection() {
   formPage.classList.remove("hidden");
 }
 
-
-
-function displaySavedPosters() {
-  for(var i = 0; i < savedPosters.length; i++) {
-    var newDiv = document.createElement("div");
-    newDiv.classList.add("mini-poster");
-    article.appendChild(newDiv);
-    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
-  }
-
-}
-
-
 function showSavedPostersSection() {
   homePage.classList.add("hidden");
   savedPostersPage.classList.remove("hidden");
   displaySavedPosters()
 }
-
-
 
 function leaveFormSection() {
   homePage.classList.remove("hidden");
@@ -193,7 +199,6 @@ function leaveSavedPostersSection() {
   savedPostersPage.classList.add("hidden");
   article.innerHTML = "";
 }
-
 
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
@@ -211,9 +216,7 @@ function updatePoster() {
   updateTitle();
   updateQuote();
   updateImage();
-
 }
-
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
