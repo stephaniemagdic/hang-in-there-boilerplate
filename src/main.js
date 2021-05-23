@@ -133,13 +133,14 @@ savePosterButton.addEventListener("click", saveNewPoster);
 // functions and event handlers go here 👇
 
 function removePoster(e) {
-  var divID = e.target.closest(`#${savedPosters.id}`);
-  var div = document.getElementById(divID);
-  console.log(div);
-  console.log(divID);
-  console.log(div.classList);
-  div.setAttribute("class", ".delete");
-
+  var targetPosterID = e.target.id;
+  var target = document.getElementById(`${e.target.id}`);
+  target.remove();
+  for (var i =0; i < savedPosters.length; i++){
+    if(`${savedPosters[i].id}` === `${targetPosterID}`){
+      savedPosters.splice(i, 1);
+    }
+  }
 }
 
 function displaySavedPosters() {
@@ -148,12 +149,10 @@ function displaySavedPosters() {
     newDiv.classList.add("mini-poster");
     article.appendChild(newDiv);
     newDiv.setAttribute("id", savedPosters[i].id);
-    // var divID = savedPosters[i].id;
-    newDiv.addEventListener("dblclick", removePoster)
-    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL id=${savedPosters[i].id}} > <h2>${savedPosters[i].title}</h2> <h4>${savedPosters[i].quote}</h4>`;
+    newDiv.addEventListener("dblclick", removePoster);
+    newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} id=${savedPosters[i].id}> <h2 id= ${savedPosters[i].id}> ${savedPosters[i].title} </h2> <h4 id= ${savedPosters[i].id}>${savedPosters[i].quote}</h4>`;
   }
-// newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} id=${savedPosters[i].id}> <h2 id= ${savedPosters[i].id}> ${savedPosters[i].title} </h2> <h4 id= ${savedPosters[i].id}>${savedPosters[i].quote}</h4>`;
-// }
+}
 
 function saveNewPoster() {
   var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
@@ -187,16 +186,11 @@ function showFormSection() {
   formPage.classList.remove("hidden");
 }
 
-
-
-
 function showSavedPostersSection() {
   homePage.classList.add("hidden");
   savedPostersPage.classList.remove("hidden");
   displaySavedPosters()
 }
-
-
 
 function leaveFormSection() {
   homePage.classList.remove("hidden");
@@ -208,7 +202,6 @@ function leaveSavedPostersSection() {
   savedPostersPage.classList.add("hidden");
   article.innerHTML = "";
 }
-
 
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
@@ -226,9 +219,7 @@ function updatePoster() {
   updateTitle();
   updateQuote();
   updateImage();
-
 }
-
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
