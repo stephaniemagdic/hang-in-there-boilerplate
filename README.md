@@ -18,8 +18,7 @@
   + Click on the _Show Saved Posters_ button to view all of the posters that have been saved.
   + Inside the saved poster gallery, posters can be removed by simply double clicking anywhere on the poster.
 
-  <a href="https://youtu.be/VyuYusAY-UM" target="_blank"><img src="https://ibb.co/kh4M78f"
-alt="Kitten poster thumbnail to link to YouTube video" width="240" height="180" border="10" /></a>
+  [🔴 🎥 Click here to watch a tutorial video 🎥 🔴](https://youtu.be/VyuYusAY-UM)
 
 
 ## Programming Languages Used
