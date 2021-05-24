@@ -1,22 +1,19 @@
-// query selector variables go here 👇
-
+// ------------------------query selector variables-----------------------
 var showRandomButton = document.querySelector('.show-random');
-var image = document.querySelector(".poster-img");
-var quote = document.querySelector(".poster-quote");
-var title = document.querySelector(".poster-title");
-var makeYourOwnPosterButton = document.querySelector(".show-form");
-var homePage = document.querySelector(".main-poster")
-var formPage = document.querySelector(".poster-form")
-var savedPostersPage = document.querySelector(".saved-posters")
-var showSavedPostersButton = document.querySelector(".show-saved")
-var takeMeBackButton = document.querySelector(".show-main");
-var backToMainButton = document.querySelector(".back-to-main");
-var showMyPosterButton = document.querySelector(".make-poster");
-var savePosterButton = document.querySelector(".save-poster");
-var article = document.querySelector(".saved-posters-grid");
-
-// we've provided you with some data to work with 👇
-
+var image = document.querySelector('.poster-img');
+var quote = document.querySelector('.poster-quote');
+var title = document.querySelector('.poster-title');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var homePage = document.querySelector('.main-poster');
+var formPage = document.querySelector('.poster-form');
+var savedPostersPage = document.querySelector('.saved-posters');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster');
+var article = document.querySelector('.saved-posters-grid');
+// ------------------------array variables------------------------
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -75,7 +72,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -102,7 +99,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -115,48 +112,45 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-
-// event listeners go here 👇
-
+// ------------------------event listeners------------------------
 window.addEventListener('load', updatePoster);
 showMyPosterButton.addEventListener('click', designPoster);
 showRandomButton.addEventListener('click', updatePoster);
-makeYourOwnPosterButton.addEventListener("click", showFormSection);
-showSavedPostersButton.addEventListener("click", showSavedPostersSection);
-takeMeBackButton.addEventListener("click", leaveFormSection);
-backToMainButton.addEventListener("click", leaveSavedPostersSection);
-savePosterButton.addEventListener("click", saveNewPoster);
-
-// functions and event handlers go here 👇
-
+makeYourOwnPosterButton.addEventListener('click', showFormSection);
+showSavedPostersButton.addEventListener('click', showSavedPostersSection);
+takeMeBackButton.addEventListener('click', leaveFormSection);
+backToMainButton.addEventListener('click', leaveSavedPostersSection);
+savePosterButton.addEventListener('click', saveNewPoster);
+// ------------------------functions------------------------
 function removePoster(e) {
   var targetPosterID = e.target.id;
   var target = document.getElementById(`${e.target.id}`);
   target.remove();
-  for (var i =0; i < savedPosters.length; i++){
-    if(`${savedPosters[i].id}` === `${targetPosterID}`){
+  for (var i =0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === `${targetPosterID}`) {
       savedPosters.splice(i, 1);
     }
   }
 }
 
 function displaySavedPosters() {
-  for(var i = 0; i < savedPosters.length; i++) {
-    var newDiv = document.createElement("div");
-    newDiv.classList.add("mini-poster");
+  for (var i = 0; i < savedPosters.length; i++) {
+    var newDiv = document.createElement('div');
+    newDiv.classList.add('mini-poster');
     article.appendChild(newDiv);
-    newDiv.setAttribute("id", savedPosters[i].id);
-    newDiv.addEventListener("dblclick", removePoster);
+    newDiv.setAttribute('id', savedPosters[i].id);
+    newDiv.addEventListener('dblclick', removePoster);
     newDiv.innerHTML= `<img src= ${savedPosters[i].imageURL} id=${savedPosters[i].id}> <h2 id= ${savedPosters[i].id}> ${savedPosters[i].title} </h2> <h4 id= ${savedPosters[i].id}>${savedPosters[i].quote}</h4>`;
   }
 }
 
-function saveNewPoster() {
+ function saveNewPoster() {
   var currentPoster = {id: Date.now(), title: title.innerText, quote: quote.innerText, imageURL: image.src };
   if (!savedPosters.length) {
-    savedPosters.push(currentPoster) }
-  else if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster)}
+    savedPosters.push(currentPoster);
+  } else if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 function designPoster(e) {
@@ -179,25 +173,25 @@ function showNewPoster(newURL, newTitle, newQuote) {
 }
 
 function showFormSection() {
-  homePage.classList.add("hidden");
-  formPage.classList.remove("hidden");
+  homePage.classList.add('hidden');
+  formPage.classList.remove('hidden');
 }
 
 function showSavedPostersSection() {
-  homePage.classList.add("hidden");
-  savedPostersPage.classList.remove("hidden");
-  displaySavedPosters()
+  homePage.classList.add('hidden');
+  savedPostersPage.classList.remove('hidden');
+  displaySavedPosters();
 }
 
 function leaveFormSection() {
-  homePage.classList.remove("hidden");
-  formPage.classList.add("hidden");
+  homePage.classList.remove('hidden');
+  formPage.classList.add('hidden');
 }
 
 function leaveSavedPostersSection() {
-  homePage.classList.remove("hidden");
-  savedPostersPage.classList.add("hidden");
-  article.innerHTML = "";
+  homePage.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden');
+  article.innerHTML = '';
 }
 
 function updateTitle() {
@@ -217,7 +211,7 @@ function updatePoster() {
   updateQuote();
   updateImage();
 }
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
