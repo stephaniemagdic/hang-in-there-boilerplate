@@ -1,13 +1,16 @@
 # Hang In There
 
-A boilerplate repo. 
+## Project Description:
 
-## Set Up
+  **Description**
+  In this project, we designed an app that creates motivational posters! Posters can be created randomly, or designed by the user with the user's own images, titles, and quotes. The posters created can be saved and viewed later in a gallery of saved posters.
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+  + Access the app [here!](https://mtcawthray.github.io/hang-in-there-boilerplate/)
+  
+## Functionality
+  + We can see a randomly generated poster upon page load as well as when the _Show Another Random Poster_ button is clicked.
+  + We are taken to a form when the _Make Your Own Poster_ button is clicked.
+  + The data entered into the form inputs will be used to create a new poster of the user's creation upon clicking the _Show My Poster_ button in the form.
+  + Clicking the _Save This Poster_ button stores the poster for viewing in the saved posters section. This can be a customized poster _or_ a randomly generated poster! If you like it- you can save it!
+  + Click on the _Show Saved Posters_ button to view all of the posters that have been saved.
+  + Inside the saved poster gallery, posters can be removed by simply double clicking anywhere on the poster.
