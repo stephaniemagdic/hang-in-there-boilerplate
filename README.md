@@ -7,7 +7,7 @@
   **Description**
   In this project, we designed an app that creates motivational posters! Posters can be created randomly, or designed by the user with the user's own images, titles, and quotes. The posters created can be saved and viewed later in a gallery of saved posters.
 
-  + Access the app [here!](https://mtcawthray.github.io/hang-in-there-boilerplate/)
+  + Access the app [here!](https://stephaniemagdic.github.io/hang-in-there-boilerplate/)
 
 ## Functionality
   + We can see a randomly generated poster upon page load as well as when the _Show Another Random Poster_ button is clicked.
