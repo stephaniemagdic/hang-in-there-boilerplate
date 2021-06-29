@@ -1,6 +1,8 @@
-# Hang In There
+# [Hang In There](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
+## Week 2 (Mod1) at Turing School of Software and Design
 
 ## Project Description:
+[Project Spec](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
 
   **Description**
   In this project, we designed an app that creates motivational posters! Posters can be created randomly, or designed by the user with the user's own images, titles, and quotes. The posters created can be saved and viewed later in a gallery of saved posters.
